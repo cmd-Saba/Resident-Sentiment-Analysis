@@ -4,7 +4,7 @@ from textblob import TextBlob
 # Load raw feedback
 df = pd.read_csv("resident_feedback.csv")
 
-# --- Step 1: Sentiment Analysis ---
+#  Sentiment Analysis 
 def get_sentiment(text):
     polarity = TextBlob(text).sentiment.polarity
     if polarity > 0.1:
@@ -16,7 +16,7 @@ def get_sentiment(text):
 
 df["Sentiment"] = df["Feedback"].apply(get_sentiment)
 
-# --- Step 2: Define Categories and Keywords ---
+#  Defining Categories and Keywords 
 category_keywords = {
     "Water": ["water", "drinking", "supply", "tap", "pipeline"],
     "Electricity": ["electricity", "power", "voltage", "cut", "load shedding"],
@@ -27,7 +27,7 @@ category_keywords = {
     "Other": []  # Default fallback
 }
 
-# --- Step 3: Categorization Function ---
+#  Categorization Function 
 def categorize_feedback(text):
     text = text.lower()
     for category, keywords in category_keywords.items():
