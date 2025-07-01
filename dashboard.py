@@ -28,10 +28,10 @@ sector_coords = {
 
 st.subheader("🗺️ Sunabeda Sector Sentiment Map")
 
-# Create the base map centered on Sunabeda
+# Creating the base map centered on Sunabeda
 m = folium.Map(location=[18.695, 82.855], zoom_start=14)
 
-# Add a marker for each sector based on sentiment
+# Adding a marker for each sector based on sentiment
 for sector, coords in sector_coords.items():
     # Filter feedback for this sector
     sector_df = df[df["Sector"] == sector]
@@ -40,7 +40,7 @@ for sector, coords in sector_coords.items():
         sentiment = "No Data"
         color = "gray"
     else:
-        # Get the most common sentiment in that sector
+        # Getting the most common sentiment in that sector
         sentiment = sector_df["Sentiment"].mode()[0]
         color = {
             "Satisfied": "green",
@@ -48,7 +48,7 @@ for sector, coords in sector_coords.items():
             "Frustrated": "red"
         }.get(sentiment, "gray")
 
-    # Add circle marker
+    # Adding circle marker
     folium.CircleMarker(
         location=coords,
         radius=10,
@@ -58,7 +58,7 @@ for sector, coords in sector_coords.items():
         popup=f"{sector}: {sentiment}"
     ).add_to(m)
 
-# Show the map in Streamlit
+# Showing the map in Streamlit
 folium_static(m)
 
 
