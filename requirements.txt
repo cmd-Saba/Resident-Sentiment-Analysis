@@ -1,13 +1,10 @@
 streamlit
 pandas
-numpy
 matplotlib
 seaborn
-plotly
-nltk
 textblob
 wordcloud
 folium
 streamlit-folium
-scikit-learn
-pyarrow
+gspread
+oauth2client
