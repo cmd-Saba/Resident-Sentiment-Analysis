@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: hal-resident-dashboard
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: streamlit run dashboard.py --server.port $PORT --server.address 0.0.0.0
-    envVars:
-      - key: GOOGLE_CREDENTIALS_JSON
-        sync: false
